@@ -18,6 +18,10 @@ export default function SideNav(){
                 <NavLinks/>
                 <div className="hidden h-auto w-full grow rounded-md bg-gray-50 md:block"></div>
             </div>
+            <div className="flex flex-col space-y-2">
+                {}
+
+            </div>
         </div>
     );
 }
