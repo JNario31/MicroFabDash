@@ -23,7 +23,7 @@ export default function DefaultLineChart({
     })
 
     return(
-    <ChartContainer config={chartConfig} className="max-h-[500px] w-full">
+    <ChartContainer config={chartConfig} className="max-h-[250px] w-full">
        <LineChart
          accessibilityLayer
          data={filteredData}
@@ -32,7 +32,6 @@ export default function DefaultLineChart({
            right: 50,
          }}
        >
-         <CartesianGrid vertical={false} />
           {/*Format X axis based on what time range is selected, see formatXAxisTick.ts*/}
          <XAxis
            dataKey="timestamp"
