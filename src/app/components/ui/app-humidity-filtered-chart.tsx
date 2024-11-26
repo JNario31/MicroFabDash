@@ -12,7 +12,7 @@ export default function HomeHumidLineChartFiltered(){
     const {data, isLoading} = useQuery(humidOptions)
     const chartDataRef = useRef<HumidData[]>([]);
     const [chartData, setChartData] = useState<HumidData[]>([]);
-    const [timeRange, setTimeRange] = useState("7d")
+    const [timeRange, setTimeRange] = useState("1min")
 
     useEffect(()=>{
         if(data) {

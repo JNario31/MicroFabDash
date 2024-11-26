@@ -23,7 +23,7 @@ export default function DefaultLineChart({
     })
 
     return(
-    <ChartContainer config={chartConfig}>
+    <ChartContainer config={chartConfig} className="max-h-[500px] w-full">
        <LineChart
          accessibilityLayer
          data={filteredData}

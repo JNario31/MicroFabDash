@@ -20,7 +20,7 @@ export default function HomeTempLineChartFiltered(){
     const {data, isLoading} = useQuery(tempOptions)
     const chartDataRef = useRef<TempData[]>([]);
     const [chartData, setChartData] = useState<TempData[]>([]);
-    const [timeRange, setTimeRange] = useState("7d")
+    const [timeRange, setTimeRange] = useState("1min")
    
     /**
      * Use effect adds new data to chartDataRef to be filtered

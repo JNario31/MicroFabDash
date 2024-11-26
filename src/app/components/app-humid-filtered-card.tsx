@@ -8,16 +8,18 @@ const queryClient = new QueryClient();
 
 export function HomeHumidFilteredCard(){
     return(
-        <Card>
-            <CardHeader>
-                <CardTitle>Humidity</CardTitle>
-                <CardDescription>Building: Bergeron, PetrieA, PetrieB</CardDescription>
-            </CardHeader>
-            <CardContent>
-                <QueryClientProvider client={queryClient}>
-                    <HomeHumidLineChartFiltered/>
-                </QueryClientProvider>
-            </CardContent>
-        </Card>
+        <div>
+            <Card>
+                <CardHeader>
+                    <CardTitle>Humidity</CardTitle>
+                    <CardDescription>Building: Bergeron, PetrieA, PetrieB</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <QueryClientProvider client={queryClient}>
+                        <HomeHumidLineChartFiltered/>
+                    </QueryClientProvider>
+                </CardContent>
+            </Card>
+        </div>
     );
 }

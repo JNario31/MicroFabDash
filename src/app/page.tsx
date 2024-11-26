@@ -9,14 +9,14 @@ export default function Home() {
 
   return (
     <>
-    <div className="grid grid-cols-1 gap-0">
-      <div className="basis-3/4 p-6">
+    <div className="grid-cols-1">
+      <div className="p-2">
         {<HomeTempFilteredCard/>}
       </div>
-      <div className="basis-3/4 p-6">
+      <div className="p-2">
         {<HomeHumidFilteredCard/>}
       </div>
-      <div className="basis-3/4 p-6">
+      <div className="p-2">
         {<Card >
           <CardHeader>
             <CardTitle>Pressure</CardTitle>
