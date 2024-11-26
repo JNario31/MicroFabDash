@@ -3,6 +3,7 @@ from flask import Flask, request,jsonify
 from flask_cors import CORS
 from datetime import datetime
 from collections import deque
+from flask_sqlalchemy import SQLAlchemy
 import time
 
 app=Flask(__name__)

@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
     <>
-    <div className="grid grid-cols-2 gap-0">
+    <div className="grid grid-cols-1 gap-0">
       <div className="basis-3/4 p-6">
         {<HomeTempFilteredCard/>}
       </div>
