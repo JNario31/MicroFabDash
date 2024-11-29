@@ -1,53 +1,45 @@
-import { CartesianGrid, Line, LineChart, ReferenceLine, Tooltip, XAxis, YAxis } from "recharts"
-
 import {
   ChartConfig,
-  ChartContainer,
 } from "@/components/ui/chart"
 
 import { useQuery } from "@tanstack/react-query"
-import { tempOptions } from "@/app/lib/data"
+import { BergeronOptions } from "@/app/lib/data"
 import { TempData } from "@/app/lib/definitions"
 import { useEffect, useRef, useState } from "react"
-import { filterData } from "@/app/lib/filterData"
-import { formatXAxisTick } from "@/app/lib/formatXAxisTick"
 import { TimeRangeSelect } from "./TimeRangeSelect"
-import { formatXAxisTickInterval } from "@/app/lib/formatXAxisTickInterval"
-import DefaultLineChart from "@/app/lib/lineChart"
+import DefaultLineChart from "@/app/lib/LineChart"
+import { filter } from "@/app/lib/filter"
 
 export default function HomeTempLineChartFiltered(){
 
-    const {data, isLoading} = useQuery(tempOptions)
+    const {data, isLoading} = useQuery(BergeronOptions)
     const chartDataRef = useRef<TempData[]>([]);
     const [chartData, setChartData] = useState<TempData[]>([]);
-    const [timeRange, setTimeRange] = useState("1min")
+    const [timeRange, setTimeRange] = useState("7d")
    
     /**
      * Use effect adds new data to chartDataRef to be filtered
      */
    useEffect(()=>{
      if(data) {
-       const newData: TempData = {
-         data: data.temp,
-         timestamp: new Date().toLocaleString(),
-       };
+       const newData: TempData[] = data.map((item:any)=>({
+         temperature: item.temperature,
+         timestamp: item.timestamp,
+       }));
    
-       chartDataRef.current.push(newData);
-       const latestData = chartDataRef.current
-       setChartData(latestData);
+       chartDataRef.current = newData;
+       setChartData(newData);
      }
    },[data]);
 
    /**
     * Filter data according to specified time ranges from TimeRangeSelect, see filterData.ts
     */
-   const filteredData=filterData(chartData,timeRange)
+   const filteredData=filter(chartData,timeRange)
   
-   
    if(isLoading) return <h1>loading...</h1>
-   console.log('Chart Data:', chartData);
-   
-   console.log('Filtered Data:', filteredData);
+
+   console.log('Filtered Finished Data:', filteredData);
 
   const chartConfig = {
     bergeron: {
@@ -59,7 +51,7 @@ export default function HomeTempLineChartFiltered(){
      return (   
       <>
       <TimeRangeSelect timeRange={timeRange} setTimeRange={setTimeRange}/>
-      <DefaultLineChart chartConfig={chartConfig} filteredData={filteredData} timeRange={timeRange}/>
+      <DefaultLineChart chartConfig={chartConfig} filteredData={filteredData} timeRange={timeRange} lineDataKey="temperature"/>
       </>
      )
    }

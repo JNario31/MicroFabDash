@@ -2,25 +2,25 @@ export function formatXAxisTickInterval( timeRange:  string, screenSizes: {isLap
     
     if(screenSizes.isLaptop){
         if(timeRange==="1min"){
-            return 20
+            return 5
         }
         else if (timeRange === "1h"){
-            return 23
+            return 2
         }else if (timeRange === "24h"){
-            return 25
+            return 1
         }else {
-            return 28
+            return 3
         }
     }else if(screenSizes.isDesktop){
         if(timeRange==="1min"){
-            return 10
+            return 5
         }
         else if (timeRange === "1h"){
-            return 15
+            return 1
         }else if (timeRange === "24h"){
-            return 20
+            return 1
         }else {
-            return 25
+            return 3
         }
     }
 

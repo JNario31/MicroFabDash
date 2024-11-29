@@ -9,23 +9,20 @@ export function TimeRangeSelect({ timeRange, setTimeRange }: TimeRangeSelectProp
   return (
     <Select value={timeRange} onValueChange={setTimeRange}>
     <SelectTrigger
-      className="h-[30px] w-[70px] lg:h-[35px] lg:w-[80px] xl:w-[140px] xl:h-[40px] rounded-lg sm:ml-auto"
+      className="h-[30px] w-[70px] lg:h-[35px] lg:w-[80px] xl:w-[140px] xl:h-[35px] rounded-lg sm:ml-auto"
       aria-label="Select a value"
     >
       <SelectValue placeholder="Last 7 days" />
     </SelectTrigger>
-    <SelectContent className="rounded-xl">
-      <SelectItem value="7d" className="rounded-md">
+    <SelectContent>
+      <SelectItem value="7d">
         Last 7 days
       </SelectItem>
-      <SelectItem value="24h" className="rounded-md">
+      <SelectItem value="24h">
         Last 24 Hours
       </SelectItem>
-      <SelectItem value="1h" className="rounded-md">
+      <SelectItem value="1h">
         Last Hour
-      </SelectItem>
-      <SelectItem value="1min" className="rounded-md">
-        Real-Time
       </SelectItem>
     </SelectContent>
   </Select>

@@ -8,28 +8,28 @@ interface DefaultLineChartProps {
     chartConfig: ChartConfig;
     filteredData: any[] | undefined;
     timeRange: string;
+    lineDataKey: string;
 }
 
 export default function DefaultLineChart({
     chartConfig,
     filteredData,
-    timeRange
+    timeRange,
+    lineDataKey,
 }: DefaultLineChartProps){
 
     const {isMobile, isTablet, isLaptop, isDesktop} = useScreenSize();
 
-    const interval = formatXAxisTickInterval(timeRange, {
-      isLaptop, isDesktop,
-    })
-
     return(
-    <ChartContainer config={chartConfig} className="max-h-[250px] w-full">
+    <ChartContainer config={chartConfig} className="max-h-[411px] w-full">
        <LineChart
          accessibilityLayer
          data={filteredData}
          margin={{
-           left: 0,
-           right: 50,
+           top:60,
+           right:50,
+           bottom:50,
+           left:0,
          }}
        >
           {/*Format X axis based on what time range is selected, see formatXAxisTick.ts*/}
@@ -39,13 +39,12 @@ export default function DefaultLineChart({
            axisLine={true}
            tickMargin={8}
            tickFormatter={(value)=>formatXAxisTick(value, timeRange)}
-           interval={interval}
          />
          <YAxis/>
          <Tooltip/>
          <ReferenceLine y={21} stroke="pink" strokeDasharray={"3 3"}/>
          <Line
-           dataKey="data"
+           dataKey={lineDataKey}
            type="natural"
            stroke="var(--color-bergeron)"
            strokeWidth={2}

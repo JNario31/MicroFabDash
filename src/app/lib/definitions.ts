@@ -1,9 +1,9 @@
 export type TempData ={
-    data: number;
+    temperature: number;
     timestamp: string;
 }
 
 export type HumidData = {
-    data: number;
+    humid: number;
     timestamp: string;
 }
